@@ -12,14 +12,13 @@ class ApiRequest
     private $curlCA;
 
     /**
-     * apirequest constructor.
-     * @param string $url api url in sprintf format
+     * ApiRequest constructor.
+     * @param string $url api url in sprintf("%s") format
      * @param string $curlCA path to curl .pem file for https
      */
     public function __construct($url, $curlCA = '')
     {
         $this->url = $url;
-
         $this->curlCA = $curlCA;
     }
 
