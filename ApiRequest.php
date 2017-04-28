@@ -1,5 +1,6 @@
 <?php
 namespace apirequest;
+
 /**
  * Class ApiRequest
  * Wrapper for php curl to json requests
@@ -15,7 +16,7 @@ class ApiRequest
      * @param string $url api url in sprintf format
      * @param string $curlCA path to curl .pem file for https
      */
-    function __construct($url, $curlCA = '')
+    public function __construct($url, $curlCA = '')
     {
         $this->url = $url;
 
@@ -30,9 +31,9 @@ class ApiRequest
      * @param bool $decodeJSON json decode flag
      * @return bool|mixed
      */
-    function request($method, $param = '', $reqType = "POST", $decodeJSON = true)
+    public function request($method, $param = '', $reqType = "POST", $decodeJSON = true)
     {
-        $ans = FALSE;
+        $ans = false;
         $types = array("GET", "POST");
         $reqType = strtoupper($reqType);
         $enough = isset($method) && in_array($reqType, $types);
@@ -55,7 +56,7 @@ class ApiRequest
 
             $result = curl_exec($ch);
 
-            if ($result !== FALSE) {
+            if ($result !== false) {
                 if ($decodeJSON) {
                     $ans = json_decode($result, true);
                 } else {
@@ -73,9 +74,9 @@ class ApiRequest
      * @param $arr
      * @return bool|string
      */
-    function arrToParam($arr)
+    public function arrToParam($arr)
     {
-        $ans = FALSE;
+        $ans = false;
         if (is_array($arr)) {
             $tmpArr = array();
             foreach ($arr as $k => $el) {
